@@ -1,0 +1,13 @@
+server:
+  port: ${SERVER_PORT:8081}
+spring:
+  datasource-mysql:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306
+    username: root
+    password:
+  datasource-ch:
+    driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+    url: jdbc:clickhouse://localhost:8123
+    username:
+    password:
