@@ -1,0 +1,28 @@
+variables:
+  contextRoot: /api
+server:
+  port: ${SERVER_PORT:8083}
+  http2:
+    enabled: true
+  undertow:
+    always-set-keep-alive: true
+    no-request-timeout: "60s"
+  servlet:
+    context-path: ${variables.contextRoot}
+  compression:
+    enabled: true
+    mime-types: text/xml,text/plain,application/json
+    min-response-size: 2KB
+spring:
+  datasource-mysql:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${SILENT_MYSQL_HOST:10.108.26.12:3306}/${SILENT_MYSQL_DB:silent}?allowMultiQueries=true
+    username: ${SILENT_MYSQL_USER:silent}
+    password: ${SILENT_MYSQL_PASSWORD:123$%^789}
+  datasource-ch:
+    driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+    url: jdbc:clickhouse://${SILENT_CLICKHOUSE_HOST:bitnami-clickhouse-stg.silent.dom:8123}/?ssl=${SILENT_CLICKHOUSE_SSL:false}&socket_timeout=30000
+    username: ${SILENT_CLICKHOUSE_USER:silent}
+    password: ${SILENT_CLICKHOUSE_PASS:WTJ4cFkydG9iM1Z6WlFvCg}
+
+
